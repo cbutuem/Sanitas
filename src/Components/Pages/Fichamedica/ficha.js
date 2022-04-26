@@ -5,22 +5,22 @@ import {Link} from "react-router-dom"
 
 
 export function FichaMedica(){
-
+  const [tag, setTag]= useState("");
   const [form, setForm]= useState({
     Nome:"",
     Idade:"",
     Sexo:"",
     Peso:"",
     Altura:"",
-    Doencas:"",
-    Alergias:"",
-    Vacinas:"",
-    Cirurgia:"",
+    Doencas:[{}],
+    Alergias:[{}],
+    Vacinas:[{}],
+    Cirurgia:[{}],
     Queixa: "",
     Medicamentos:"",
     Pedido:"",
     HistoricoVida:"",
-    HistoricoFamiliar:"",
+    HistoricoFamiliar:[{}],
     Obs:"",
     NumeroGestacao:"",
     Menarca:"",
@@ -36,9 +36,18 @@ export function FichaMedica(){
     setForm({
       ...form, [event.target.name]: event.target.value
    }); 
-   console.log ("oii",form);
+  }
+  
+  function handleChangeTags() {
+    const formData = { ...form };
 
+    formData.tags.push(tag);
 
+    setForm(formData);
+
+    console.log(form);
+
+    setTag("");
   }
 
    async function handleSubmit(event){
@@ -53,126 +62,144 @@ export function FichaMedica(){
 
         <span  className={styles.title}>
         
-            <h1>Ficha Médica</h1>
+            <h1>Prontuário Médico</h1>
         
         </span>
 
         <div className={styles.ficha}>
-        <form  onSubmit={handleSubmit}>
 
-        <div>
-          <h2>Gerais</h2>
-          <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">Nome Completo</label>
-              <input onChange={handleChange} value={form.Nome} name="Nome" placeholder="Nome do paciente" />
-            </div><div class="mb-3">
-            <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">Sexo</label>
-              <input onChange={handleChange} value={form.Sexo} name="Sexo" placeholder="F/M" />
-            </div><div class="mb-3"></div>
-              <label for="formGroupExampleInput2" class="form-label">Idade</label>
-              <input onChange = {handleChange} value ={form.Idade} name="Idade" placeholder="Idade do paciente" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label">Peso</label>
-              <input onChange = {handleChange} value={form.Peso} name="Peso" placeholder="Peso do paciente" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Medicamentos de Uso Contínuo</label>
-              <input onChange= {handleChange} value= {form.Medicamentos} name= "Medicamentos" placeholder="Medicamentos" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label">Altura</label>
-              <input onChange= {handleChange} value= {form.Altura} name= "Altura" placeholder="Altura do paciente" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Hábitos de Vida</label>
-              <input onChange= {handleChange} value= {form.HistoricoVida} name= "HistoricoVida" placeholder="Histórico" />
-            </div>
-            
+          <form  onSubmit={handleSubmit}>
 
+            <div className={styles.gerais}>
 
-        </div>
+              <div className={styles.sub}><h2>Gerais</h2></div>
+
+              <div className={styles.cat}>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}>Nome Completo</label>
+                  <input onChange={handleChange}  className={styles.lineMedium} value={form.Nome} name="Nome" placeholder="Nome Completo" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}>Sexo</label>
+                  <input onChange={handleChange} className={styles.lineSmall} value={form.Sexo} name="Sexo" placeholder="Sexo" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}>Idade</label>
+                  <input onChange = {handleChange} className={styles.lineSmall} value ={form.Idade} name="Idade" placeholder="Idade" />
+                </div>
+                <div className={styles.topic}>
+                  <label  className={styles.boxForm}>Peso</label>
+                  <input onChange = {handleChange} className={styles.lineSmall} value={form.Peso} name="Peso" placeholder="Peso" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}>Medicamentos de uso Contínuo</label>
+                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.Medicamentos} name= "Medicamentos" placeholder="Medicamentos" />
+                  <button>add</button>
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}>Altura</label>
+                  <input onChange= {handleChange} className={styles.lineSmall} value= {form.Altura} name= "Altura" placeholder="Altura" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Hábitos de Vida</label>
+                  <input onChange= {handleChange} value= {form.HistoricoVida} name= "HistoricoVida" placeholder="Histórico" />
+                </div>
+              </div>
+            </div>
           
-        <div>
-        <h2>Antecedentes Pessoais</h2>
-          <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Vacinas</label>
-              <input onChange= {handleChange} value= {form.Vacinas} name= "Vacinas" placeholder="Vacinas" />
+            <div className={styles.ap}>
+
+              <div className={styles.sub}><h2>Antecedentes Pessoais</h2></div>
+
+              <div className={styles.cat}>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Vacinas</label>
+                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.Vacinas} name= "Vacinas" placeholder="Vacinas" />
+                  <button>add</button>
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}>Doenças crônicas</label>
+                  <input onChange= {handleChange} value= {form.Doencas} name= "Doencas" placeholder="Doenças crônicas" />
+                  <button>add</button>
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Alergias</label>
+                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.Alergias} name= "Alergias" placeholder="Alergias" />
+                  <button>add</button>
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Histórico Familiar</label>
+                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.HistoricoFamiliar} name= "HistoricoFamiliar" placeholder="Histórico" />
+                  <button>add</button>
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Antecedente Cirúrgico</label>
+                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.Cirurgia} name= "Cirurgia" placeholder="Data, Local e Motivo" />
+                  <button>add</button>
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Historico de Internação</label>
+                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.Internacao} name= "Internacao" placeholder="internação" />
+                  <button>add</button>
+                </div>
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label">Doenças crônicas</label>
-              <input onChange= {handleChange} value= {form.Doencas} name= "Doencas" placeholder="Doenças crônicas" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Alergias</label>
-              <input onChange= {handleChange} value= {form.Alergias} name= "Alergias" placeholder="Alergias" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Histórico Familiar</label>
-              <input onChange= {handleChange} value= {form.HistoricoFamiliar} name= "HistoricoFamiliar" placeholder="Histórico" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Antecedente Cirúrgico</label>
-              <input onChange= {handleChange} value= {form.Cirurgia} name= "Cirurgia" placeholder="Data, Local e Mtivo" />
-            </div>
-        </div>
             
             
-        <div>
-          <h2>Antecedente Ginecológico</h2>
-          <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Número de gestacao (gpa)
-</label>
-              <input onChange= {handleChange} value= {form.NumeroGestacao} name= "NumeroGestacao" placeholder="Gestações" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Menarca</label>
-              <input onChange= {handleChange} value= {form.Menarca} name= "Menarca" placeholder="Menarca" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Menopausa</label>
-              <input onChange= {handleChange} value= {form.Menopausa} name= "Menopausa" placeholder="Menopausa" />
+            <div className={styles.gineco}>
+
+              <div className={styles.sub}><h2>Antecedente Ginecológico</h2></div>
+
+              <div className={styles.cat}>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Número de gestacao (gpa) </label>
+                  <input onChange= {handleChange} className={styles.lineSmall} value= {form.NumeroGestacao} name= "NumeroGestacao" placeholder="Gestações" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Menarca</label>
+                  <input onChange= {handleChange} className={styles.lineSmall} value= {form.Menarca} name= "Menarca" placeholder="Menarca" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Menopausa</label>
+                  <input onChange= {handleChange}  className={styles.lineSmall} value= {form.Menopausa} name= "Menopausa" placeholder="Menopausa" />
+                </div>
+              </div>
             </div>
 
-       
-
-        </div>
-            <div>
-            <h2>Resumo</h2>
-
-
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Queixa Atual</label>
-              <input onChange= {handleChange} value= {form.Queixa} name= "Queixa" placeholder="Queixa" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Hipótese</label>
-              <input onChange= {handleChange} value= {form.Hipotese} name= "Hipotese" placeholder="Hipotese" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Conduta</label>
-              <input onChange= {handleChange} value= {form.Conduta} name= "Conduta" placeholder="Conduta" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Diagnóstico</label>
-              <input onChange= {handleChange} value= {form.Diagnostico} name= "Diagnostico" placeholder="Diagnóstico" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Alterações ao Exame  Físico</label>
-              <input onChange= {handleChange} value= {form.Alteracoes} name= "Alteracoes" placeholder="Alterações" />
-            </div>
+            <div className={styles.resumo}>
             
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Pedido de Exâme</label>
-              <input onChange= {handleChange} value= {form.Pedido} name= "Pedido" placeholder="Pedido" />
-            </div>
-            
-            
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"> Observações</label>
-              <input onChange= {handleChange} value= {form.Obs} name= "Obs" placeholder="Observações" />
-            </div>
+              <div className={styles.sub}><h2>Resumo</h2></div>
+
+              <div className={styles.cat}>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Queixa Atual</label>
+                  <input onChange= {handleChange} className={styles.lineBig} value= {form.Queixa} name= "Queixa" placeholder="Queixa" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Hipótese</label>
+                  <input onChange= {handleChange} className={styles.lineBig} value= {form.Hipotese} name= "Hipotese" placeholder="Hipotese" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Conduta</label>
+                  <input onChange= {handleChange} className={styles.lineBig} value= {form.Conduta} name= "Conduta" placeholder="Conduta" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Diagnóstico</label>
+                  <input onChange= {handleChange} className={styles.lineBig} value= {form.Diagnostico} name= "Diagnostico" placeholder="Diagnóstico" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Alterações ao Exame  Físico</label>
+                  <input onChange= {handleChange} className={styles.lineBig} value= {form.Alteracoes} name= "Alteracoes" placeholder="Alterações" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Pedido de Exâme</label>
+                  <input onChange= {handleChange} className={styles.lineBig} value= {form.Pedido} name= "Pedido" placeholder="Pedido" />
+                </div>
+                <div className={styles.topic}>
+                  <label className={styles.boxForm}> Observações</label>
+                  <input onChange= {handleChange} className={styles.lineBig} value= {form.Obs} name= "Obs" placeholder="Observações" />
+                </div>
+              </div>
             </div>
             <button type ="submit" className="botao">Enviar</button>
           </form>
