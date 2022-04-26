@@ -1,0 +1,36 @@
+
+.app{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border: 3px solid yellow;
+}
+
+.home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid black;
+}
+
+
+.header{
+  display: flex;
+  justify-content: center;
+  border: 2px solid blue;
+  width: 1500px;
+  justify-content: space-evenly;
+  
+}
+
+
+.ficha{
+  display: flex;
+  justify-content: center;
+  border: 2px solid red;
+  width: auto;
+ 
+}
+

@@ -1,0 +1,18 @@
+.navBar{
+    display:flex;
+    justify-content: space-around;
+    list-style-type: none;
+    flex-direction: row;
+    width: 1500px;
+    margin: 30px;
+    
+    
+   
+  }
+
+  .topicos{
+    color: black;
+    
+
+  }
+  
