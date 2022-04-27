@@ -7,8 +7,8 @@ export function Exames (){
 
     const [form, setForm]= useState({
         Nome:"",
-        Data:"",
-        Tipo:"",
+        Especializacao:"",
+        Pedido:"",
         Exame:"",
         Diagnostico:"",      
       });
@@ -43,25 +43,18 @@ export function Exames (){
           <form onSubmit={handleSubmit}>
 
             <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">Nome Completo</label>
-              <input onChange={handleChange} value={form.Nome} name="Nome" placeholder="Nome do paciente" />
+              <label for="formGroupExampleInput" class="form-label">Nome do Médico</label>
+              <input onChange={handleChange} value={form.Nome} name="Nome" placeholder="Nome do Médico" />
             </div>
             <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">Data</label>
-              <input onChange={handleChange} value={form.Data} name="Data" placeholder="Data" />
+              <label for="formGroupExampleInput" class="form-label">Especialização</label>
+              <input onChange={handleChange} value={form.Especializacao} name="Especializacao" placeholder="Especialização" />
             </div>
             <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">Tipo</label>
-              <input onChange={handleChange} value={form.Tipo} name="Tipo" placeholder="Lab/Img" />
+              <label for="formGroupExampleInput" class="form-label">Pedido</label>
+              <input onChange={handleChange} value={form.Pedido} name="pedido" placeholder="Pedido" />
             </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">Exame</label>
-              <input onChange={handleChange} value={form.Exame} name="Exame" placeholder="Exame" />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">Diagnóstico</label>
-              <input onChange={handleChange} value={form.Diagnostico} name="Diagnostico" placeholder="Exame" />
-            </div>
+            
             <button type ="submit" className="botao">Enviar</button>
           </form>  
         </div>

@@ -2,7 +2,8 @@ export function Botao(props){
     return(
         <>
             <div>
-                {props.currentTags.map((currentTag) => {
+                {props.tagName !== "Cirurgia" && 
+                    props.currentTags.map((currentTag) => {
                     return (
                         <small className="m-1" style={{ color: "gray" }}>
                             {currentTag}
