@@ -14,6 +14,7 @@ return(
     <span className={styles.topicos}><Link to ={"/cirurgia"}>Cirurgias</Link></span>
     <span className={styles.topicos}><Link to ={"/historico"}>Histórico</Link></span>
     <span className={styles.topicos}><Link to ={"/diagnostico"}>Diagnóstico Atual</Link></span>
+    
 </div>
 
 )
