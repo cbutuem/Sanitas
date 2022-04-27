@@ -1,10 +1,16 @@
 import styles from "./ficha.module.css"
 import {useState} from "react"
 import axios from "axios"
-import {Link} from "react-router-dom" 
+//import {Link} from "react-router-dom" 
+import { Botao } from "../../Botao/Botao";
 
 
 export function FichaMedica(){
+  const [ciru, setCiru] = useState({
+    data: "",
+    local: "",
+    motivo: "",
+  });
   const [tag, setTag]= useState("");
   const [form, setForm]= useState({
     Nome:"",
@@ -12,15 +18,16 @@ export function FichaMedica(){
     Sexo:"",
     Peso:"",
     Altura:"",
-    Doencas:[{}],
-    Alergias:[{}],
-    Vacinas:[{}],
+    Doencas:[],
+    Alergias:[],
+    Vacinas:[],
     Cirurgia:[{}],
+    Internacao:[],
     Queixa: "",
-    Medicamentos:"",
+    Medicamentos:[],
     Pedido:"",
     HistoricoVida:"",
-    HistoricoFamiliar:[{}],
+    HistoricoFamiliar:[],
     Obs:"",
     NumeroGestacao:"",
     Menarca:"",
@@ -37,19 +44,28 @@ export function FichaMedica(){
       ...form, [event.target.name]: event.target.value
    }); 
   }
+
+  function handleChangeCiru (event) {
+    setCiru({
+      ...ciru, [event.target.name]: event.target.value
+   }); 
+  }
   
-  function handleChangeTags() {
+  function handleChangeTags(event) {
     const formData = { ...form };
-
-    formData.tags.push(tag);
-
+    const name= event.target.name
+    console.log(name);
+    if(name === "Cirurgia"){
+      formData[name].push(ciru); 
+    }
+    formData[name].push(tag);
+    
     setForm(formData);
 
     console.log(form);
 
     setTag("");
   }
-
    async function handleSubmit(event){
      event.preventDefault();
      await axios.post ("https://ironrest.herokuapp.com/camila-dante", form);
@@ -93,8 +109,8 @@ export function FichaMedica(){
                 </div>
                 <div className={styles.topic}>
                   <label className={styles.boxForm}>Medicamentos de uso Contínuo</label>
-                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.Medicamentos} name= "Medicamentos" placeholder="Medicamentos" />
-                  <button>add</button>
+                  <input onChange= {(event) => {setTag(event.target.value);}} className={styles.lineMedium} value= {tag} name= "Medicamentos" placeholder="Medicamentos" />
+                  <Botao but={handleChangeTags} name="Medicamentos" currentTags={form.Medicamentos} tagName="Medicamentos"/>
                 </div>
                 <div className={styles.topic}>
                   <label className={styles.boxForm}>Altura</label>
@@ -114,33 +130,37 @@ export function FichaMedica(){
               <div className={styles.cat}>
                 <div className={styles.topic}>
                   <label className={styles.boxForm}> Vacinas</label>
-                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.Vacinas} name= "Vacinas" placeholder="Vacinas" />
-                  <button>add</button>
+                  <input onChange= {(event) => {setTag(event.target.value);}} className={styles.lineMedium} value= {tag} name= "Vacinas" placeholder="Vacinas" />
+                  <Botao but={handleChangeTags} name="Vacinas" currentTags={form.Vacinas} tagName="Vacinas"/>
                 </div>
                 <div className={styles.topic}>
                   <label className={styles.boxForm}>Doenças crônicas</label>
-                  <input onChange= {handleChange} value= {form.Doencas} name= "Doencas" placeholder="Doenças crônicas" />
-                  <button>add</button>
+                  <input onChange= {(event) => {setTag(event.target.value);}} className={styles.lineMedium} value= {tag} name= "Doencas" placeholder="Doenças crônicas" />
+                  <Botao but={handleChangeTags} name="Doencas" currentTags={form.Doencas} tagName="Doencas"/>
                 </div>
                 <div className={styles.topic}>
                   <label className={styles.boxForm}> Alergias</label>
-                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.Alergias} name= "Alergias" placeholder="Alergias" />
-                  <button>add</button>
+                  <input onChange= {(event) => {setTag(event.target.value);}} className={styles.lineMedium} value= {tag}  name= "Alergias" placeholder="Alergias" />
+                  <Botao but={handleChangeTags} name="Alergias" currentTags={form.Alergias} tagName="Alergias"/>
                 </div>
                 <div className={styles.topic}>
                   <label className={styles.boxForm}> Histórico Familiar</label>
-                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.HistoricoFamiliar} name= "HistoricoFamiliar" placeholder="Histórico" />
-                  <button>add</button>
+                  <input onChange= {(event) => {setTag(event.target.value);}} className={styles.lineMedium} value= {tag}  name= "HistoricoFamiliar" placeholder="Histórico" />
+                  <Botao but={handleChangeTags} name="HistoricoFamiliar" currentTags={form.HistoricoFamiliar} tagName="HistoricoFamiliar"/>
                 </div>
                 <div className={styles.topic}>
-                  <label className={styles.boxForm}> Antecedente Cirúrgico</label>
-                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.Cirurgia} name= "Cirurgia" placeholder="Data, Local e Motivo" />
-                  <button>add</button>
+                  <form onChange= {(event) => {setCiru(event.target.value); console.log(ciru);}} className={styles.lineMedium} value= {ciru}  name= "Cirurgia" >
+                    <label className={styles.boxForm}> Antecedente Cirúrgico</label>
+                    <input onChange= {handleChangeCiru} className={styles.lineSmall} value= {ciru.data} name= "data" placeholder="data" />
+                    <input onChange= {handleChangeCiru} className={styles.lineSmall} value= {ciru.local} name= "local" placeholder="local" />
+                    <input onChange= {handleChangeCiru} className={styles.lineSmall} value= {ciru.motivo} name= "motivo" placeholder="motivo" /> 
+                  </form>
+                  {/*<Botao but={handleChangeTags} name="Cirurgia" currentTags={form.Cirurgia} tagName="Cirurgia"/>*/}
                 </div>
                 <div className={styles.topic}>
                   <label className={styles.boxForm}> Historico de Internação</label>
-                  <input onChange= {handleChange} className={styles.lineMedium} value= {form.Internacao} name= "Internacao" placeholder="internação" />
-                  <button>add</button>
+                  <input onChange= {(event) => {setTag(event.target.value);}} className={styles.lineMedium} value= {tag}  name= "Internacao" placeholder="internação" />
+                  <Botao but={handleChangeTags} name="internacao" currentTags={form.Internacao} tagName="Internacao"/>
                 </div>
               </div>
             </div>
