@@ -39,23 +39,28 @@ export function Exames (){
 
         
 
-        <div>
+        <div className={styles.ficha}>
           <form onSubmit={handleSubmit}>
 
-            <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">Nome do Médico</label>
-              <input onChange={handleChange} value={form.Nome} name="Nome" placeholder="Nome do Médico" />
+          <div className={styles.gerais}>
+
+          <div className={styles.cat}>
+
+            <div className={styles.topic}>
+              <label className={styles.boxForm}>Nome do Médico</label>
+              <input onChange={handleChange} className={styles.lineMedium} value={form.Nome} name="Nome" placeholder="Nome do Médico" />
             </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">Especialização</label>
-              <input onChange={handleChange} value={form.Especializacao} name="Especializacao" placeholder="Especialização" />
+            <div className={styles.topic}>
+              <label className={styles.boxForm}>Especialização</label>
+              <input onChange={handleChange} className={styles.lineMedium} value={form.Especializacao} name="Especializacao" placeholder="Especialização" />
             </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">Pedido</label>
-              <input onChange={handleChange} value={form.Pedido} name="pedido" placeholder="Pedido" />
+            <div className={styles.topic}>
+              <label className={styles.boxForm}>Pedido</label>
+              <input onChange={handleChange} className={styles.lineMedium} value={form.Pedido} name="pedido" placeholder="Pedido" />
             </div>
-            
-            <button type ="submit" className="botao">Enviar</button>
+            </div>
+            <button type ="submit" className={styles.lineSmall}>Enviar</button>
+            </div>
           </form>  
         </div>
 

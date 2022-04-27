@@ -38,33 +38,39 @@ export function LoginProf(){
             <div className={styles.ficha}>
             <form  onSubmit={handleSubmit}>
 
-            <div>
+            <div className={styles.gerais}>
+           
+            <div className={styles.cat}>
                 
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput" class="form-label">CRM</label>
-                 <input onChange={handleChange} value={form.CRM} name="CRM" placeholder="CRM" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm} > CRM </label>
+                 <input onChange={handleChange} className={styles.lineMedium} value={form.CRM} name="CRM" placeholder="CRM" />
                  </div>
                  
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput" class="form-label">Idade do Paciente</label>
-                 <input onChange={handleChange} value={form.Idade} name="Idade" placeholder="Idade" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm}>Idade do Paciente</label>
+                 <input onChange={handleChange} className={styles.lineSmall} value={form.Idade} name="Idade" placeholder="Idade" />
                  </div>
                  
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput2" class="form-label">CPF do Paciente</label>
-                 <input onChange = {handleChange} value ={form.CPFpaciente} name="CPFpaciente" placeholder="CPFpaciente" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm}>CPF do Paciente</label>
+                 <input onChange = {handleChange} className={styles.lineMedium} value ={form.CPFpaciente} name="CPFpaciente" placeholder="CPFpaciente" />
                  </div>
                  
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput2" class="form-label">Senha</label>
-                 <input onChange = {handleChange} value={form.Senha} name="Senha" placeholder="Senha" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm}>Senha</label>
+                 <input onChange = {handleChange} className={styles.lineMedium} value={form.Senha} name="Senha" placeholder="Senha" />
                  </div>
             
             
             </div>
-            <button type ="submit" className="botao">Enviar</button>
+            <button type ="submit" className={styles.lineSmall}>Enviar</button>
+            </div>
+            
+            
             </form>
             </div>
+            
 
 
         </div>
