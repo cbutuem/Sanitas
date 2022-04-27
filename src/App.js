@@ -8,6 +8,10 @@ import {Diagnostico} from "./Components/Pages/Diagnostico/diagnostico";
 import {Exames} from "./Components/Pages/Exames/exames";
 import {Historico} from "./Components/Pages/Historico/historico";
 import {Tratamentos} from "./Components/Pages/Tratamentos/tratamentos";
+import {LoginProf} from "./Components/Login Profissional/LoginProf";
+import {LoginUsuario} from "./Components/Login Usuario/LoginUsuario";
+import {CadProf} from "./Components/Cadastro Profissional/CadProf";
+import {CadUsu} from "./Components/Cadastro Usuario/CadUsu"
 
 
 
@@ -31,6 +35,10 @@ function App() {
         <Route path="/exames" element = {<Exames/>}/>
         <Route path="/historico" element = {<Historico/>}/>
         <Route path="/tratamentos" element = {<Tratamentos/>}/>
+        <Route path="/Loginprof" element = {<LoginProf/>}/>
+        <Route path="LoginUsuario" element = {<LoginUsuario/>}/>
+        <Route path="CadProf" element = {<CadProf/>}/>
+        <Route path="CadUsu" element = {<CadUsu/>}/>
 
         
 
