@@ -18,10 +18,8 @@
 }
 
 
-.form{
-    display: flex;
-    flex-direction: column;
-    justify-content:space-between;
+.top{
+   margin-bottom: 0.5px;
     
 }
 
