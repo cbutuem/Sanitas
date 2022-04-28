@@ -21,7 +21,7 @@ export function LoginUsuario(){
 
     async function handleSubmit(event){
         event.preventDefault();
-        await axios.get ("https://ironrest.herokuapp.com/camila-dante", form);
+        await axios.get ("https://ironrest.herokuapp.com/camila-dante-paciente", form);
       }
 
     return (

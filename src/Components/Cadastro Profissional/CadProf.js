@@ -21,13 +21,25 @@ export function CadProf(){
       function handleChange (event) {
         setForm({
           ...form, [event.target.name]: event.target.value
-       }); 
+       });
+       
     }
 
 
     async function handleSubmit(event){
         event.preventDefault();
-        await axios.post ("https://ironrest.herokuapp.com/camila-dante", form);
+        await axios.post("https://ironrest.herokuapp.com/camila-dante-medico", form);
+        setForm({
+          Nome:"",
+          CPFdoProf:"",
+          RG:"",
+          Area:"",
+          Especializacao:"",
+          CRM:"",
+          Email:"",
+          Telefone:"",
+          Senha:"",  
+        }) 
       }
 
     return (
@@ -43,7 +55,6 @@ export function CadProf(){
             <div className={styles.ficha}>
             <form  onSubmit={handleSubmit}>
 
-            <div>
                 
                  <div class="mb-3">
                  <label for="formGroupExampleInput" class="form-label">Nome</label>
@@ -53,7 +64,7 @@ export function CadProf(){
                  
                  <div class="mb-3">
                  <label for="formGroupExampleInput2" class="form-label">CPF do Profissional</label>
-                 <input onChange = {handleChange} value ={form.CPFdoProf} name="CPFdoProf" placeholder="CPFpaciente" />
+                 <input onChange = {handleChange} value ={form.CPFdoProf} name="CPFdoProf" placeholder="CPF" />
                  </div>
 
                  <div class="mb-3">
@@ -90,10 +101,7 @@ export function CadProf(){
                  <label for="formGroupExampleInput2" class="form-label">Senha</label>
                  <input onChange = {handleChange} value={form.Senha} name="Senha" placeholder="Senha" />
                  </div>
-            
-            
-            </div>
-            <button type ="submit" className="botao">Enviar</button>
+              <button type ="submit" className="botao">Enviar</button>
             </form>
             </div>
 

@@ -1,11 +1,11 @@
 import styles from "./ficha.module.css"
-import {useState} from "react"
+import { useState } from "react"
 import axios from "axios"
 //import {Link} from "react-router-dom" 
 import { Botao } from "../../Botao/Botao";
 
 
-export function FichaMedica(){
+export function FormularioMedico(){
   const [ciru, setCiru] = useState({
     data: "",
     local: "",
