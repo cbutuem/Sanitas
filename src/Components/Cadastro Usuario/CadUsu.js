@@ -25,7 +25,7 @@ export function CadUsu(){
 
     async function handleSubmit(event){
         event.preventDefault();
-        await axios.post ("https://ironrest.herokuapp.com/camila-dante-paciente", form);
+        await axios.put("https://ironrest.herokuapp.com/camila-dante-paciente", form);
         setForm({
           Nome:"",
           CPFpaciente:"",

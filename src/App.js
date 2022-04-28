@@ -22,7 +22,7 @@ function App() {
    
     
 <div className="app">
-   {params.userId ? <span className= "header"><Navbar/></span> : null}
+   {params.userId !== "" ? <span className= "header"><Navbar/></span> : null}
       <Routes className="home">
 
         <Route path="/formulario/:userId" element ={<FormularioMedico/>}/>

@@ -1,11 +1,15 @@
 import styles from "./ficha.module.css"
-import { useState } from "react"
+import { useState, useEffect } from "react";
 import axios from "axios"
 //import {Link} from "react-router-dom" 
 import { Botao } from "../../Botao/Botao";
+import { useParams } from "react-router-dom";
+
 
 
 export function FormularioMedico(){
+  const params = useParams();
+  const [topic, setTopic] = useState({ficha: [] });
   const [ciru, setCiru] = useState({
     data: "",
     local: "",
@@ -38,6 +42,21 @@ export function FormularioMedico(){
     Alteracoes:"",
   
   });
+
+  const [submitStatus, setSubmitStatus] = useState(false);
+
+  useEffect(() => {
+    async function fetchTopic() {
+      const response = await axios.get(
+        `https://ironrest.herokuapp.com/camila-dante-paciente/${params.userId}`
+      );
+      setTopic(response.data);
+      console.log("oii",response.data);
+      setSubmitStatus(false);
+    }
+
+    fetchTopic();
+  }, [params.userId, submitStatus]);
 
   function handleChange (event) {
     setForm({
@@ -76,10 +95,20 @@ export function FormularioMedico(){
     
   }
 
-   async function handleSubmit(event){
-     event.preventDefault();
-     await axios.post ("https://ironrest.herokuapp.com/camila-dante", form);
-   }
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const attTopic = { ...topic };
+    attTopic.ficha.push(form);
+    console.log("wleblw",attTopic.ficha, attTopic); 
+    delete attTopic._id;
+
+    await axios.put(
+      `https://ironrest.herokuapp.com/camila-dante-paciente/${params.userId}`,
+      attTopic
+    );
+    setSubmitStatus(true);
+  }
 
 
     return (
