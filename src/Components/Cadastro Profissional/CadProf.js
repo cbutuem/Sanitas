@@ -1,10 +1,12 @@
 import {useState} from "react"
 import axios from "axios"
 import styles from "./CadProf.module.css"
+import { useNavigate } from "react-router-dom";
 
 
 
 export function CadProf(){
+    const navigate = useNavigate();
     const [form, setForm]= useState({
         Nome:"",
         CPFdoProf:"",
@@ -39,7 +41,8 @@ export function CadProf(){
           Email:"",
           Telefone:"",
           Senha:"",  
-        }) 
+        })
+        navigate(`/`); 
       }
 
     return (

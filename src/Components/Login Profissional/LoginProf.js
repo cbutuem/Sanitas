@@ -4,7 +4,7 @@ import styles from "./LoginProf.module.css"
 import { useNavigate } from "react-router-dom";
 
 
-export function LoginProf(){
+export function LoginProf(props){
     const navigate = useNavigate();
     const [med, setMed] = useState([]);
     const [user, setUser] = useState([]); 
@@ -56,7 +56,8 @@ export function LoginProf(){
         }
         else{
           navigate(`user/${usuario[0]._id}`);
-          console.log("pq n entrou?");
+          props.changeLoggedStatus(true);
+          
         }  
         
         console.log("ALELUIA");
