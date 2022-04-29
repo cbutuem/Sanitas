@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios"
+import axios from "axios";
+import styles from './FichaUser.modules.css';
 
 export function FichaUser(){
   const params = useParams();
@@ -20,8 +21,20 @@ export function FichaUser(){
     const exames = user.ficha;
     const cont = exames.filter(sem => sem !== "");
     return (
+      <div className={styles.box}>
+      <span  className={styles.title}>
+          
+          <h1>Cirurgias</h1>
+  
+       </span>
+  
+       <div className={styles.ficha}>
+  
+       <div className={styles.gerais}>
+  
+      <ul className={styles.topicos}></ul>
     <div>
-      <ul>
+      <ul className={styles.topicos}>
         {
           cont.map((icons) =>{
             console.log(icons);
@@ -34,5 +47,9 @@ export function FichaUser(){
         }
       </ul>
     </div>
+    </div>
+      </div>
+    </div>
+    
     )
 }
