@@ -1,4 +1,4 @@
-//import styles from "./cirurgia.module.css"
+import styles from "./cirurgia.module.css"
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios"
@@ -20,7 +20,19 @@ export function Cirurgia (){
     const cirur = user.ficha;
     const cont = cirur.filter(sem => sem.Cirurgia !== "")
     return(
-      <ul>
+
+      <div className={styles.box}>
+      <span  className={styles.title}>
+          
+          <h1>Cirurgias</h1>
+  
+       </span>
+  
+       <div className={styles.ficha}>
+  
+       <div className={styles.gerais}>
+  
+      <ul className={styles.topicos}>
       {
         cont.map((icons) =>{
           console.log(icons.Cirurgia);
@@ -31,6 +43,10 @@ export function Cirurgia (){
             );
         })
       }
-    </ul>
+      </ul>
+      </div>
+      </div>
+    </div>
+    
     )
 }
