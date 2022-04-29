@@ -4,39 +4,29 @@ import axios from "axios"
 
 export function FichaUser(){
     const params = useParams();
-    const [user, setUser] = useState([]);
-    
+    const [user, setUser] = useState({ ficha: [{Nome:"Teste"}]});
+    console.log(params.userId); 
     
     useEffect(() => {
       async function fetchUser() {
         const response = await axios.get(
           `https://ironrest.herokuapp.com/camila-dante-paciente/${params.userId}`
         );
+        console.log(response.data);
         setUser(response.data);
+        
       }
       fetchUser();
-    }, [params.userId]);
+      
+    }, []);
   
-    const find = user.ficha;
 
-    //console.log(user.ficha.at(-1).Sexo); 
-  
+    console.log(user);
     return (
       <>
         <h1>OIIII</h1>
         <h1>{user.Nome}</h1>
         <p>{user.Idade}</p>
-        {/*<p>{find.at(-1).Nome}</p>
-        <p>{find.at(-1).Idade}</p>
-        <p>{find.at(-1).Sexo}</p>
-        <p>{find.at(-1).Peso}</p>
-        <p>{find.at(-1).Altura}</p>
-        <p>{find.at(-1).Doencas}</p>
-        <p>{find.at(-1).Alergias}</p>
-        <p>{find.at(-1).Vacinas}</p>
-        <p>{find.at(-1).HistoricoFamiliar}</p>
-        <p>{find.at(-1).HistoricoVida}</p>
-        <p>{find.at(-1).Medicamentos}</p>*/}
 
         
       </>

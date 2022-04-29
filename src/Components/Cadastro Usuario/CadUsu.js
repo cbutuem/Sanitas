@@ -1,20 +1,21 @@
-import {useState} from "react"
+import { useState, useEffect } from "react";
 import axios from "axios"
 import styles from "./CadUsu.module.css"
+import { useNavigate } from "react-router-dom"
+
 
 
 
 export function CadUsu(){
+    const navigate = useNavigate();  
     const [form, setForm]= useState({
         Nome:"",
         CPFpaciente:"",
         RG:"",
-        Senha:"",
         Email:"",
         Telefone:"",
         Aniversario:"",
-        ficha:[],        
-              
+        ficha:[],       
       });
 
       function handleChange (event) {
@@ -26,7 +27,9 @@ export function CadUsu(){
 
     async function handleSubmit(event){
         event.preventDefault();
-        await axios.post ("https://ironrest.herokuapp.com/camila-dante-paciente/", form);
+        await axios.post ("https://ironrest.herokuapp.com/camila-dante-paciente", form);
+        navigate(`/`);
+
       }
 
     return (
@@ -71,12 +74,6 @@ export function CadUsu(){
                  <label className={styles.boxForm} >Email</label>
                  <input onChange={handleChange} className={styles.lineMedium} value={form.Email} name="Email" placeholder="Email" />
                  </div>
-
-                 <div className={styles.topic}>
-                 <label className={styles.boxForm} >Senha</label>
-                 <input onChange = {handleChange} className={styles.lineMedium} value={form.Senha} name="Senha" placeholder="Senha" />
-                 </div>
-
 
                  <div className={styles.topic}>
                  <label className={styles.boxForm} >Aniversário</label>

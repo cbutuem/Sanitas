@@ -22,8 +22,19 @@ export function Exames (){
     const exames = user.ficha;
     const cont = exames.filter(sem => sem.Pedido !== "");
     return (
-    <div>
-      <ul>
+
+    <div className={styles.box}>
+    <span  className={styles.title}>
+        
+        <h1>Exames</h1>
+
+     </span>
+
+     <div className={styles.ficha}>
+
+     <div className={styles.gerais}>
+
+      <ul className={styles.topicos}>
         {
           cont.map((icons) =>{
             console.log(icons.Pedido);
@@ -35,6 +46,9 @@ export function Exames (){
           })
         }
       </ul>
+      </div>
+      </div>
     </div>
+    
     )
 }
