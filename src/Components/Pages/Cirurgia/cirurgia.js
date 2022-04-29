@@ -23,10 +23,10 @@ export function Cirurgia (){
       <ul>
       {
         cont.map((icons) =>{
-          console.log(icons.Pedido);
+          console.log(icons.Cirurgia);
           return(
             <li>
-              <span>{icons.Pedido}</span>
+              <span>{icons.Cirurgia}</span>
             </li>
             );
         })
