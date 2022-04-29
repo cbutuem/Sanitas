@@ -24,7 +24,7 @@ export function FichaUser(){
       <div className={styles.box}>
       <span  className={styles.title}>
           
-          <h1>Cirurgias</h1>
+          <h1>Ficha do Paciente</h1>
   
        </span>
   
