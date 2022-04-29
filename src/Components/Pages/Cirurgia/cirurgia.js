@@ -5,7 +5,7 @@ import axios from "axios"
 
 export function Cirurgia (){
     const params = useParams();
-    const [user, setUser] = useState({ ficha:[] });
+    const [user, setUser] = useState({ficha:[]});
 
     useEffect(() => {
       async function fetchUser() {
@@ -17,19 +17,20 @@ export function Cirurgia (){
       fetchUser();
     }, [params.userId]);
 
-   //const elements = user.ficha;
-   console.log("hii", user.ficha);
-   
-   //const setFiltro = elements.map(ciru => ciru.Cirurgia);
-   //console.log("hii",setFiltro);
-
+    const cirur = user.ficha;
+    const cont = cirur.filter(sem => sem.Cirurgia !== "")
     return(
-        <ul>
-            {user.ficha[user.ficha.length - 1].map((currentFicha) => {
-        return <h1>Teste</h1>;
-      })}
-        </ul>
-
-
+      <ul>
+      {
+        cont.map((icons) =>{
+          console.log(icons.Pedido);
+          return(
+            <li>
+              <span>{icons.Pedido}</span>
+            </li>
+            );
+        })
+      }
+    </ul>
     )
 }
