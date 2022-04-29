@@ -53,34 +53,34 @@ export function CadUsu(){
                  
                  <div className={styles.topic}>
                  <label className={styles.boxForm} >CPF do Paciente</label>
-                 <input onChange = {handleChange} value ={form.CPFpaciente} name="CPFpaciente" placeholder="CPF do Paciente" />
+                 <input onChange = {handleChange} className={styles.lineMedium} value ={form.CPFpaciente} name="CPFpaciente" placeholder="CPF do Paciente" />
                  </div>
 
                  <div className={styles.topic}>
                  <label className={styles.boxForm} >RG</label>
-                 <input onChange = {handleChange} value ={form.RG} name="RG" placeholder="RG" />
+                 <input onChange = {handleChange} className={styles.lineMedium} value ={form.RG} name="RG" placeholder="RG" />
                  </div>
 
                  <div className={styles.topic}>
                  <label className={styles.boxForm} >Telefone</label>
-                 <input onChange={handleChange} value={form.Telefone} name="Telefone" placeholder="Telefone" />
+                 <input onChange={handleChange} className={styles.lineMedium} value={form.Telefone} name="Telefone" placeholder="Telefone" />
                  </div>
 
 
                  <div className={styles.topic}>
                  <label className={styles.boxForm} >Email</label>
-                 <input onChange={handleChange} value={form.Email} name="Email" placeholder="Email" />
+                 <input onChange={handleChange} className={styles.lineMedium} value={form.Email} name="Email" placeholder="Email" />
                  </div>
 
                  <div className={styles.topic}>
                  <label className={styles.boxForm} >Senha</label>
-                 <input onChange = {handleChange} value={form.Senha} name="Senha" placeholder="Senha" />
+                 <input onChange = {handleChange} className={styles.lineMedium} value={form.Senha} name="Senha" placeholder="Senha" />
                  </div>
 
 
                  <div className={styles.topic}>
                  <label className={styles.boxForm} >Aniversário</label>
-                 <input onChange={handleChange} value={form.Aniversario} name="Aniversario" placeholder="Aniversário" />
+                 <input onChange={handleChange} className={styles.lineMedium} value={form.Aniversario} name="Aniversario" placeholder="Aniversário" />
                  </div>
                  
                  

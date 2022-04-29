@@ -66,12 +66,15 @@
  }
  .lineBig{
      max-width: 700px;
+     border-radius: 10px;
  }
  .lineSmall{
      width: 100px;
+     border-radius: 10px;
  }
  .lineMedium{
      width: 300px;
+     border-radius: 10px;
  
  }
  .sub{
