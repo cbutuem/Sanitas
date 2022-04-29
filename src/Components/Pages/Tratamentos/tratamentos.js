@@ -6,7 +6,7 @@ import axios from "axios"
 
 export function Tratamentos (){
     const params = useParams();
-  const [user, setUser] = useState({});
+    const [user, setUser] = useState({ ficha: [{}]});
   
   
   useEffect(() => {
@@ -18,9 +18,23 @@ export function Tratamentos (){
     }
     fetchUser();
   }, [params.userId])
-    return (
-        <>
-            
-        </>
-    )
+
+  const med = user.ficha;
+  const cont = med.filter(sem => sem.Medicamentos !== "");
+  return (
+  <div>
+    <ul>
+      {
+        cont.map((icons) =>{
+          console.log("oii", icons.Medicamentos);
+          return(
+            <li>
+              <span>{icons.Medicamentos}</span>
+            </li>
+            );
+        })
+      }
+    </ul>
+  </div>
+  )
 }

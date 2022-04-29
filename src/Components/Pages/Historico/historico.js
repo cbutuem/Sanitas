@@ -6,34 +6,36 @@ import axios from "axios";
 
 
 export function Historico(){
-    const params = useParams();
-    const [dados, setdados] = useState([]);
+  const params = useParams();
+    const [user, setUser] = useState({ficha:[]});
+    
     
     useEffect(() => {
-        async function posts() {
-            const bloco = await axios.get(`https://ironrest.herokuapp.com/camila-dante-paciente/${params.userId}`);
-            setdados(bloco.data);
-        }
-        posts();    
-    },[params.userId]);
-    
+      async function fetchUser() {
+        const response = await axios.get(
+          `https://ironrest.herokuapp.com/camila-dante-paciente/${params.userId}`
+        );
+        setUser(response.data);
+      }
+      fetchUser();
+    }, [params.userId]);
+
+    const date = user.ficha;
+    const cont = date.filter(sem => sem.Data !== "");
     return (
-        <>
-            <Link to="/box-post">
-                <button>Criar</button>
-            </Link>
-            <ul class="box">
-            {dados.map((info) => {
-              return (
-                <li id= "box" class= "boxPost color">
-                    <h1 class="titulo">{info.instituicao}</h1>
-                    <h2 className ="subTitulo">{info.descricao}</h2>
-                    <p class= 'cat color'>{info.categoria}</p>
-                  <Link to={`/detail/${info._id}`}>Saiba mais</Link>
-                </li>
+    <div>
+      <ul>
+        {
+          cont.map((icons) =>{
+            console.log(icons.Data);
+            return(
+              <li>
+                <span>{icons.Data}</span>
+              </li>
               );
-                })}
-            </ul>
-      </>
-    );
-  }
+          })
+        }
+      </ul>
+    </div>
+    )
+}

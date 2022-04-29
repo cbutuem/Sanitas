@@ -23,11 +23,13 @@ export function Cirurgia (){
       <ul>
       {
         cont.map((icons) =>{
-          console.log(icons.Pedido);
+          console.log(icons.Cirurgia[0]);
           return(
-            <li>
-              <span>{icons.Pedido}</span>
-            </li>
+            <>
+              <li>{icons.Cirurgia[0].data}</li>
+              <li>{icons.Cirurgia[0].local}</li>
+              <li>{icons.Cirurgia[0].motivo}</li>
+            </>
             );
         })
       }
