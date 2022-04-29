@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios"
-import { useParams } from "react-router-dom";
 import styles from "./LoginProf.module.css"
 import { useNavigate } from "react-router-dom";
 
 
 export function LoginProf(){
     const navigate = useNavigate();
-    const params = useParams();
     const [med, setMed] = useState([]);
     const [user, setUser] = useState([]); 
     const [form, setForm]= useState({
@@ -48,11 +46,18 @@ export function LoginProf(){
       const find = med.filter(acharCRM => acharCRM.CRM === form.CRM);
       const itens = Object.keys(find);
       const usuario = user.filter(loginUser => loginUser.CPFpaciente === form.CPFpaciente);
+      console.log("vaii",usuario);
       
       if(find[itens].Nome === form.Nome && find[itens].Senha === form.Senha && find[itens].CRM === form.CRM){
-        usuario.map((info) => {
-          navigate(`/user/${info._id}`);
-        });
+        console.log("oiii",usuario);
+        if(usuario.length === 0){
+          navigate(`/CadUsu`);
+          console.log("eiii, vai filho");
+        }
+        else{
+          navigate(`user/${usuario[0]._id}`);
+          console.log("pq n entrou?");
+        }  
         
         console.log("ALELUIA");
       }

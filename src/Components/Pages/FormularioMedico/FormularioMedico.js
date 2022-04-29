@@ -7,7 +7,12 @@ import { useParams } from "react-router-dom";
 
 
 
-export function FormularioMedico(){
+export function FormularioMedico(props){
+    const dataAtual = new Date();
+    const dia = dataAtual.getDate();
+    const mes = (dataAtual.getMonth() + 1);
+    const ano = dataAtual.getFullYear();
+
   const params = useParams();
   const [topic, setTopic] = useState({ficha: [] });
   const [ciru, setCiru] = useState({
@@ -40,6 +45,8 @@ export function FormularioMedico(){
     Conduta:"",
     Diagnostico:"",
     Alteracoes:"",
+    Data:`${dia}/${mes}/${ano}`,
+    Medico:"",
   
   });
 
@@ -189,9 +196,9 @@ export function FormularioMedico(){
                 </div>
                 <div className={styles.topic}>
                     <label className={styles.boxForm}> Antecedente Cirúrgico</label>
-                    <input onChange= {handleChangeCiru} className={styles.lineSmall} value= {ciru.data} name= "data" placeholder="data" />
-                    <input onChange= {handleChangeCiru} className={styles.lineSmall} value= {ciru.local} name= "local" placeholder="local" />
-                    <input onChange= {handleChangeCiru} className={styles.lineSmall} value= {ciru.motivo} name= "motivo" placeholder="motivo" />
+                    <input onChange= {handleChangeCiru} className={styles.lineSmall} value= {ciru.tipo} name= "data" placeholder="Tipo de cirurgia" />
+                    <input onChange= {handleChangeCiru} className={styles.lineSmall} value= {ciru.data} name= "local" placeholder="Data" />
+                    <input onChange= {handleChangeCiru} className={styles.lineSmall} value= {ciru.motivo} name= "motivo" placeholder="Motivo" />
                     <Botao but={handleChangeTags} name="Cirurgia" currentTags={form.Cirurgia} tagName="Cirurgia"/> 
   
                 </div>

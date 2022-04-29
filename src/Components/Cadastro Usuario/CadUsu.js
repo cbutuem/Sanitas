@@ -1,15 +1,16 @@
-import {useState} from "react"
+import { useState, useEffect } from "react";
 import axios from "axios"
 import styles from "./CadUsu.module.css"
 
 
 
+
 export function CadUsu(){
+   
     const [form, setForm]= useState({
         Nome:"",
         CPFpaciente:"",
         RG:"",
-        Senha:"",
         Email:"",
         Telefone:"",
         Aniversario:"",
@@ -30,7 +31,6 @@ export function CadUsu(){
           Nome:"",
           CPFpaciente:"",
           RG:"",
-          Senha:"",
           Email:"",
           Telefone:"",
           Aniversario:"",    
@@ -43,7 +43,8 @@ export function CadUsu(){
 
             <span  className={styles.title}>
         
-                <h1>Cadastro do Usuário</h1>
+                <h1>Cadastro do Paciente</h1>
+                <p>Seu paciente ainda não tem cadastro</p>
         
              </span>
 
@@ -55,8 +56,7 @@ export function CadUsu(){
                  <div class="mb-3">
                  <label for="formGroupExampleInput" class="form-label">Nome</label>
                  <input onChange={handleChange} value={form.Nome} name="Nome" placeholder="Nome" />
-                 </div>
-                 
+                 </div>           
                  
                  <div class="mb-3">
                  <label for="formGroupExampleInput2" class="form-label">CPF do Paciente</label>
@@ -66,11 +66,6 @@ export function CadUsu(){
                  <div class="mb-3">
                  <label for="formGroupExampleInput2" class="form-label">RG</label>
                  <input onChange = {handleChange} value ={form.RG} name="RG" placeholder="RG" />
-                 </div>
-
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput2" class="form-label">Senha</label>
-                 <input onChange = {handleChange} value={form.Senha} name="Senha" placeholder="Senha" />
                  </div>
 
                  <div class="mb-3">
@@ -93,7 +88,7 @@ export function CadUsu(){
             
             
             </div>
-            <button type ="submit" className="botao">Enviar</button>
+            <button type ="submit" className="botao">Entrar</button>
             </form>
             </div>
 

@@ -4,7 +4,7 @@ import axios from "axios"
 
 export function FichaUser(){
     const params = useParams();
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState([]);
     
     
     useEffect(() => {
@@ -17,20 +17,27 @@ export function FichaUser(){
       fetchUser();
     }, [params.userId]);
   
-   
+    const find = user.ficha;
+
+    //console.log(user.ficha.at(-1).Sexo); 
   
     return (
       <>
         <h1>OIIII</h1>
         <h1>{user.Nome}</h1>
         <p>{user.Idade}</p>
-        <p>{user.Peso}</p>
-        <p>{user.Altura}</p>
-        <p>{user.Doenças}</p>
-        <p>{user.Alergia}</p>
-        <p>{user.Medicamentos}</p>
-        <p>{user.Vacinas}</p>
-        <p>{user.Altura}</p>
+        {/*<p>{find.at(-1).Nome}</p>
+        <p>{find.at(-1).Idade}</p>
+        <p>{find.at(-1).Sexo}</p>
+        <p>{find.at(-1).Peso}</p>
+        <p>{find.at(-1).Altura}</p>
+        <p>{find.at(-1).Doencas}</p>
+        <p>{find.at(-1).Alergias}</p>
+        <p>{find.at(-1).Vacinas}</p>
+        <p>{find.at(-1).HistoricoFamiliar}</p>
+        <p>{find.at(-1).HistoricoVida}</p>
+        <p>{find.at(-1).Medicamentos}</p>*/}
+
         
       </>
     );

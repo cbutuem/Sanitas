@@ -16,6 +16,7 @@ export function Historico(){
         }
         posts();    
     },[params.userId]);
+    
     return (
         <>
             <Link to="/box-post">
