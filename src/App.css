@@ -1,11 +1,19 @@
 
+
 .app{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
-  border: 3px solid yellow;
+  border: 3px ;
+  background-color:#BFEFFF;
+  background-image: url("./Assets/formacao-medica-e-de-saude-com-espaco-de-texto_1017-26841.webp");
+  background-repeat:no-repeat;
+  background-size: cover;
+  ;
+
+  
 }
 
 .home{
@@ -13,16 +21,24 @@
   flex-direction: column;
   justify-content: center;
   border: 2px solid black;
-  
+  width: 1000px;
 }
 
 
 .header{
   display: flex;
   justify-content: center;
-  border: 2px solid blue;
+  border: 2px ;
   width: 1500px;
   justify-content: space-evenly;
+  background-color:#87CEFA;
+  box-shadow: 2px 2px 10px 0 rgb(69, 68, 68);
+  border-radius: 10px;
+  font-size: 1.3em;
+  margin: 0px;
+  
+  
+  
   
 }
 

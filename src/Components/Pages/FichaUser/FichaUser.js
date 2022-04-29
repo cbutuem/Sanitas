@@ -1,12 +1,13 @@
-import styles from "./cirurgia.module.css"
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios"
+import axios from "axios";
+import styles from './FichaUser.modules.css';
 
-export function Cirurgia (){
-    const params = useParams();
+export function FichaUser(){
+  const params = useParams();
     const [user, setUser] = useState({ficha:[]});
-
+    
+    
     useEffect(() => {
       async function fetchUser() {
         const response = await axios.get(
@@ -17,14 +18,13 @@ export function Cirurgia (){
       fetchUser();
     }, [params.userId]);
 
-    const cirur = user.ficha;
-    const cont = cirur.filter(sem => sem.Cirurgia !== "")
-    return(
-
+    const exames = user.ficha;
+    const cont = exames.filter(sem => sem !== "");
+    return (
       <div className={styles.box}>
       <span  className={styles.title}>
           
-          <h1>Cirurgias</h1>
+          <h1>Ficha do Paciente</h1>
   
        </span>
   
@@ -32,19 +32,22 @@ export function Cirurgia (){
   
        <div className={styles.gerais}>
   
+      <ul className={styles.topicos}></ul>
+    <div>
       <ul className={styles.topicos}>
-      {
-        cont.map((icons) =>{
-          console.log(icons.Cirurgia);
-          return(
-            <li>
-              <span>{icons.Cirurgia}</span>
-            </li>
-            );
-        })
-      }
+        {
+          cont.map((icons) =>{
+            console.log(icons);
+            return(
+              <li>
+                <span>{icons}</span>
+              </li>
+              );
+          })
+        }
       </ul>
-      </div>
+    </div>
+    </div>
       </div>
     </div>
     

@@ -1,20 +1,21 @@
-import {useState} from "react"
+import { useState, useEffect } from "react";
 import axios from "axios"
 import styles from "./CadUsu.module.css"
+import { useNavigate } from "react-router-dom"
+
 
 
 
 export function CadUsu(){
+    const navigate = useNavigate();  
     const [form, setForm]= useState({
         Nome:"",
         CPFpaciente:"",
         RG:"",
-        Senha:"",
         Email:"",
         Telefone:"",
         Aniversario:"",
-       
-              
+        ficha:[],       
       });
 
       function handleChange (event) {
@@ -26,7 +27,9 @@ export function CadUsu(){
 
     async function handleSubmit(event){
         event.preventDefault();
-        await axios.post ("https://ironrest.herokuapp.com/camila-dante", form);
+        await axios.post ("https://ironrest.herokuapp.com/camila-dante-paciente", form);
+        navigate(`/`);
+
       }
 
     return (
@@ -41,51 +44,48 @@ export function CadUsu(){
 
             <div className={styles.ficha}>
             <form  onSubmit={handleSubmit}>
+            <div className={styles.gerais}>
 
-            <div>
+            <div className={styles.cat}>
                 
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput" class="form-label">Nome</label>
-                 <input onChange={handleChange} value={form.Nome} name="Nome" placeholder="Nome" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm} >Nome</label>
+                 <input onChange={handleChange} className={styles.lineBig} value={form.Nome} name="Nome" placeholder="Nome" />
                  </div>
                  
                  
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput2" class="form-label">CPF do Paciente</label>
-                 <input onChange = {handleChange} value ={form.CPFpaciente} name="CPFpaciente" placeholder="CPF do Paciente" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm} >CPF do Paciente</label>
+                 <input onChange = {handleChange} className={styles.lineMedium} value ={form.CPFpaciente} name="CPFpaciente" placeholder="CPF do Paciente" />
                  </div>
 
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput2" class="form-label">RG</label>
-                 <input onChange = {handleChange} value ={form.RG} name="RG" placeholder="RG" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm} >RG</label>
+                 <input onChange = {handleChange} className={styles.lineMedium} value ={form.RG} name="RG" placeholder="RG" />
                  </div>
 
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput2" class="form-label">Senha</label>
-                 <input onChange = {handleChange} value={form.Senha} name="Senha" placeholder="Senha" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm} >Telefone</label>
+                 <input onChange={handleChange} className={styles.lineMedium} value={form.Telefone} name="Telefone" placeholder="Telefone" />
                  </div>
 
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput" class="form-label">Email</label>
-                 <input onChange={handleChange} value={form.Email} name="Email" placeholder="Email" />
+
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm} >Email</label>
+                 <input onChange={handleChange} className={styles.lineMedium} value={form.Email} name="Email" placeholder="Email" />
                  </div>
 
-                                 
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput" class="form-label">Telefone</label>
-                 <input onChange={handleChange} value={form.Telefone} name="Telefone" placeholder="Telefone" />
-                 </div>
-
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput" class="form-label">Aniversário</label>
-                 <input onChange={handleChange} value={form.Aniversario} name="Aniversario" placeholder="Aniversário" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm} >Aniversário</label>
+                 <input onChange={handleChange} className={styles.lineMedium} value={form.Aniversario} name="Aniversario" placeholder="Aniversário" />
                  </div>
                  
                  
             
             
             </div>
-            <button type ="submit" className="botao">Enviar</button>
+            <button type ="submit" className={styles.lineSmall}>Enviar</button>
+            </div>
             </form>
             </div>
 

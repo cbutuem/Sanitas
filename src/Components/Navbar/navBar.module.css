@@ -5,14 +5,16 @@
     flex-direction: row;
     width: 1500px;
     margin: 30px;
+    background: #87CEFA;
     
     
    
   }
 
   .topicos{
-    color: black;
-    
+    color: white;
+    text-decoration: none;
+   
 
   }
   

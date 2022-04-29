@@ -21,7 +21,7 @@ export function LoginUsuario(){
 
     async function handleSubmit(event){
         event.preventDefault();
-        await axios.post ("https://ironrest.herokuapp.com/camila-dante", form);
+        await axios.get ("https://ironrest.herokuapp.com/camila-dante-paciente", form);
       }
 
     return (
@@ -36,28 +36,32 @@ export function LoginUsuario(){
 
             <div className={styles.ficha}>
             <form  onSubmit={handleSubmit}>
+            <div className={styles.gerais}>
+            <div className={styles.cat}>
 
-            <div>
+            
                 
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput" class="form-label">Nome</label>
-                 <input onChange={handleChange} value={form.Nome} name="Nome" placeholder="Nome" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm}>Nome</label>
+                 <input onChange={handleChange} className={styles.lineBig}  value={form.Nome} name="Nome" placeholder="Nome" />
                  </div>
                  
                  
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput2" class="form-label">CPF do Paciente</label>
-                 <input onChange = {handleChange} value ={form.CPFpaciente} name="CPFpaciente" placeholder="CPFpaciente" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm}>CPF do Paciente</label>
+                 <input onChange = {handleChange} className={styles.lineMedium} value ={form.CPFpaciente} name="CPFpaciente" placeholder="CPFpaciente" />
                  </div>
                  
-                 <div class="mb-3">
-                 <label for="formGroupExampleInput2" class="form-label">Senha</label>
-                 <input onChange = {handleChange} value={form.Senha} name="Senha" placeholder="Senha" />
+                 <div className={styles.topic}>
+                 <label className={styles.boxForm}>Senha</label>
+                 <input onChange = {handleChange} className={styles.lineMedium} value={form.Senha} name="Senha" placeholder="Senha" />
                  </div>
             
             
             </div>
-            <button type ="submit" className="botao">Enviar</button>
+            </div>
+            <button type ="submit" className={styles.lineSmall}>Enviar</button>
+           
             </form>
             </div>
 
