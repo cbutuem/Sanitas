@@ -1,0 +1,76 @@
+.box {
+
+    display: flex;
+    flex-direction: column;
+ }
+ 
+ .title{
+     display: flex;
+     justify-content: center; 
+ }
+ 
+ 
+ .ficha{
+     display: flex;
+     justify-content:space-between;
+     flex-direction:row;
+     flex-wrap:wrap;
+     border: 3px solid black;
+     max-width: 800px;
+ }
+ 
+ .gerais{
+     display: flex;
+     flex-direction:column;
+     flex-wrap:wrap;
+ }
+ 
+ .ap{
+     display: flex;
+     flex-direction:column;
+     flex-wrap:wrap;
+ }
+ 
+ .gineco{
+     display: flex;
+     flex-direction:column;
+     flex-wrap:wrap;
+ }
+ .resumo{
+     display: flex;
+     flex-direction:column;
+     flex-wrap:wrap;
+ }
+ .topic{
+     display: flex;
+     flex-direction:row;
+     margin-top: 20px;
+     padding: 5px; 
+     gap: 5px 
+ }
+ .boxForm{
+     display: flex;
+     width: auto;
+     flex-direction:row;
+     flex-wrap:wrap;
+ }
+ .lineBig{
+     max-width: 700px;
+ }
+ .lineSmall{
+     width: 100px;
+ }
+ .lineMedium{
+     width: 500px;
+ 
+ }
+ .sub{
+     display: flex;
+     justify-content: center; 
+ }
+ .cat{
+     display: flex;
+     flex-direction:row;
+     flex-wrap:wrap;
+     max-width: 800px; 
+ }

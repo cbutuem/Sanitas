@@ -13,7 +13,7 @@ export function CadUsu(){
         Email:"",
         Telefone:"",
         Aniversario:"",
-       
+        ficha:[],        
               
       });
 
@@ -26,7 +26,7 @@ export function CadUsu(){
 
     async function handleSubmit(event){
         event.preventDefault();
-        await axios.post ("https://ironrest.herokuapp.com/camila-dante", form);
+        await axios.post ("https://ironrest.herokuapp.com/camila-dante-paciente/", form);
       }
 
     return (

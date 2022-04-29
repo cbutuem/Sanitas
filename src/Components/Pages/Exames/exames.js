@@ -1,74 +1,40 @@
 import styles from "./exames.module.css"
-import {useState} from "react"
+import {useState, useEffect} from "react"
+import { useParams } from "react-router-dom";
 import axios from "axios"
 import {Link} from "react-router-dom"
 
 export function Exames (){
-
-    const [form, setForm]= useState({
-        Nome:"",
-        Especializacao:"",
-        Pedido:"",
-        Exame:"",
-        Diagnostico:"",      
-      });
-
-
-    function handleChange (event) {
-        setForm({
-          ...form, [event.target.name]: event.target.value
-       }); 
-
-    }
-       async function handleSubmit(event){
-        event.preventDefault();
-        await axios.post ("https://ironrest.herokuapp.com/camila-dante", form);
-      }
-
-
-
-    return (
-
-    <div className={styles.box}>
-
-        <span  className={styles.title}>
-        
-            <h1>Exames</h1>
-        
-        </span>
-
-        
-
-        <div className={styles.ficha}>
-          <form onSubmit={handleSubmit}>
-
-          <div className={styles.gerais}>
-
-          <div className={styles.cat}>
-
-            <div className={styles.topic}>
-              <label className={styles.boxForm}>Nome do Médico</label>
-              <input onChange={handleChange} className={styles.lineMedium} value={form.Nome} name="Nome" placeholder="Nome do Médico" />
-            </div>
-            <div className={styles.topic}>
-              <label className={styles.boxForm}>Especialização</label>
-              <input onChange={handleChange} className={styles.lineMedium} value={form.Especializacao} name="Especializacao" placeholder="Especialização" />
-            </div>
-            <div className={styles.topic}>
-              <label className={styles.boxForm}>Pedido</label>
-              <input onChange={handleChange} className={styles.lineMedium} value={form.Pedido} name="pedido" placeholder="Pedido" />
-            </div>
-            </div>
-            <button type ="submit" className={styles.lineSmall}>Enviar</button>
-            </div>
-          </form>  
-        </div>
-
-        
-
-
-
-     </div>
+  const params = useParams();
+    const [user, setUser] = useState({ficha:[]});
     
+    
+    useEffect(() => {
+      async function fetchUser() {
+        const response = await axios.get(
+          `https://ironrest.herokuapp.com/camila-dante-paciente/${params.userId}`
+        );
+        setUser(response.data);
+      }
+      fetchUser();
+    }, [params.userId]);
+
+    const exames = user.ficha;
+    const cont = exames.filter(sem => sem.Pedido !== "");
+    return (
+    <div>
+      <ul>
+        {
+          cont.map((icons) =>{
+            console.log(icons.Pedido);
+            return(
+              <li>
+                <span>{icons.Pedido}</span>
+              </li>
+              );
+          })
+        }
+      </ul>
+    </div>
     )
 }
